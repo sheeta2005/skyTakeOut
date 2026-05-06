@@ -21,7 +21,8 @@ public class OrderTask {
         log.info("定时处理超时订单：{}", LocalDateTime.now());
         LocalDateTime time = LocalDateTime.now().plusMinutes(-15);
         // select * from orders where status = ? and order_time < (当前时间 - 15分钟)
-        List<Orders> ordersList = orderMapper.getByStatusAndOrderTimeLT(Orders.PENDING_PAYMENT, time);
+       // List<Orders> ordersList = orderMapper.getByStatusAndOrderTimeLT(Orders.PENDING_PAYMENT, time);
+        List<Orders> ordersList =null;
         if (ordersList != null && ordersList.size() > 0) {
             for (Orders orders : ordersList) {
                 orders.setStatus(Orders.CANCELLED);
